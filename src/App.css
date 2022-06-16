@@ -31,3 +31,80 @@
 .color2 {
   background: black;
 }
+.name {
+  text-align: center;
+}
+.cardnv {
+  margin-bottom: 10px;
+}
+.a {
+  display: inline-block;
+}
+.row-header {
+  margin: 0px auto;
+  padding: 0px auto;
+}
+
+.row-content {
+  margin: 0px auto;
+  padding: 50px 0px 50px 0px;
+  border-bottom: 1px ridge;
+  min-height: 400px;
+}
+
+.footer {
+  background-color: #0dcaf0;
+  margin: 0px auto;
+  padding: 20px 0px 20px 0px;
+}
+.jumbotron {
+  padding: 70px 30px 70px 30px;
+  margin: 0px auto;
+  background: #9575cd;
+  color: floralwhite;
+}
+
+address {
+  font-size: 80%;
+  margin: 0px;
+  color: #0f0f0f;
+}
+
+.navbar-dark {
+  background-color: #512da8;
+}
+.department {
+  padding: 10px;
+}
+.departments {
+  padding: 50px;
+}
+.moneys {
+  padding: 10px;
+}
+.card h5 {
+  padding: 8px;
+}
+.card p {
+  padding: 10px;
+}
+.form {
+  margin-left: 40px;
+}
+.form label input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.form-type form select {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.form-type {
+  margin-left: 40px;
+  margin-top: 10px;
+}
+.Dept {
+  font-weight: 600;
+  font-size: 20px;
+  display: block;
+}
