@@ -111,7 +111,7 @@ export const STAFFS = [
     id: 7,
     name: "Nguyễn Văn H",
     doB: "2003-01-01T08:59:00.000Z",
-    salaryScale: 1,
+    salaryScale: 1.2,
     startDate: "2019-04-30T08:59:00.000Z",
     department: DEPARTMENTS[2],
     annualLeave: 9,
