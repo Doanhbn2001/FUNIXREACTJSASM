@@ -8,17 +8,20 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-function ShowDepartments(props) {
-  const show = props.departments.map((department) => {
-    return (
+const DepartmentList = (props) => (
+  <div className="row departments">
+    {props.departments.map((department) => (
       <div className="col-12 col-md-4 col-xl-3 department">
         <Card>
           <CardTitle>{department.name}</CardTitle>
           <CardText>Số lượng nhân viên: {department.numberOfStaff}</CardText>
         </Card>
       </div>
-    );
-  });
+    ))}
+  </div>
+);
+
+function ShowDepartments(props) {
   return (
     <div>
       <div className="row">
@@ -29,7 +32,7 @@ function ShowDepartments(props) {
           <BreadcrumbItem active>Phòng ban</BreadcrumbItem>
         </Breadcrumb>
       </div>
-      <div className="row departments">{show}</div>
+      <DepartmentList departments={props.departments} />
     </div>
   );
 }
