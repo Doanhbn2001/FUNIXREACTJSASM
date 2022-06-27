@@ -15,6 +15,8 @@ import {
 import { Redirect } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { BsFillPersonPlusFill } from "react-icons/bs";
+import { addStaff } from "../redux/reducer";
+import { store } from "../App";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -58,8 +60,8 @@ class Menu extends Component {
   }
 
   modalSubmit(values) {
-    console.log("Current State is: " + JSON.stringify(values));
-    alert(JSON.stringify(values));
+    store.dispatch(addStaff(values));
+    this.toggleModal();
   }
 
   render() {
@@ -127,7 +129,7 @@ class Menu extends Component {
                     validators={{
                       required,
                       minLength: minLength(3),
-                      maxLength: maxLength(15),
+                      maxLength: maxLength(30),
                     }}
                   />
                   <Errors
@@ -137,7 +139,7 @@ class Menu extends Component {
                     messages={{
                       required: "Required",
                       minLength: "Must be greater than 2 characters",
-                      maxLength: "Must be 15 characters or less",
+                      maxLength: "Must be 30 characters or less",
                       isNumber: " Must be a number",
                     }}
                   />
