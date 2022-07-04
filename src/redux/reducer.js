@@ -1,4 +1,4 @@
-import { DEPARTMENTS, STAFFS, ROLE } from "../share/staffs";
+import { DEPARTMENTS, STAFFS } from "../share/staffs";
 
 const KEYSTAFFS = "STAFFS";
 const KEYDEPARTMENTS = "DEPARTMENTS";
