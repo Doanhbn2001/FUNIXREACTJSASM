@@ -4,6 +4,7 @@ import dateFormat from "dateformat";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
 function ShowStaff(props) {
+  console.log(props.staff);
   return (
     <div className="container">
       <div className="row">
@@ -24,7 +25,7 @@ function ShowStaff(props) {
           <p>
             Ngày vào công ty: {dateFormat(props.staff.startDate, "dd/mm/yyyy")}
           </p>
-          <p>Phòng ban: {props.staff.department.name}</p>
+          {/* <p>Phòng ban: {props.staff.department.name}</p> */}
           <p>Số ngày nghỉ còn lại: {props.staff.annualLeave}</p>
           <p>Số ngày đã làm thêm: {props.staff.overTime}</p>
         </div>

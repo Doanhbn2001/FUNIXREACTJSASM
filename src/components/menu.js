@@ -15,8 +15,9 @@ import {
 import { Redirect } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { BsFillPersonPlusFill } from "react-icons/bs";
-import { addStaff } from "../redux/reducer";
+// import { addStaff } from "../redux/reducer";
 import { store } from "../App";
+import { Loading } from "./loading";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -60,7 +61,7 @@ class Menu extends Component {
   }
 
   modalSubmit(values) {
-    store.dispatch(addStaff(values));
+    // store.dispatch(addStaff(values));
     this.toggleModal();
   }
 
@@ -85,6 +86,28 @@ class Menu extends Component {
     const menuFind = this.state.staffFind.map((staff) => {
       return Staff(staff);
     });
+
+    const fullMenu = () => {
+      if (this.props.staffsLoading) {
+        return (
+          <div className="row menu">
+            <Loading />
+          </div>
+        );
+      } else if (this.props.staffsError) {
+        return (
+          <div className="row menu">
+            <h4>{this.props.staffs.staffsError}</h4>
+          </div>
+        );
+      } else {
+        return (
+          <div className="row menu">
+            {this.state.checkStaff ? menuFind : menu}
+          </div>
+        );
+      }
+    };
 
     return (
       <div>
@@ -112,9 +135,10 @@ class Menu extends Component {
             </Button>
           </div>
         </div>
-        <div className="row menu">
+        {fullMenu()}
+        {/* <div className="row menu">
           {this.state.checkStaff ? menuFind : menu}
-        </div>
+        </div> */}
         <div className="row">
           <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
             <ModalHeader toggle={this.toggleModal}>Thêm nhân viên</ModalHeader>

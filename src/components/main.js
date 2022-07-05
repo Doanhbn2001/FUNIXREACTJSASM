@@ -7,6 +7,7 @@ import ShowDepartments from "./department";
 import ShowMoney from "./money";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { fetchStaffs, fetchDepts } from "../redux/actionCreators";
 
 const mapStateToProps = (state) => {
   return {
@@ -15,9 +16,23 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDitspatchToProps = (ditspatch) => ({
+  fetchStaffs: () => {
+    ditspatch(fetchStaffs());
+  },
+  fetchDepts: () => {
+    ditspatch(fetchDepts());
+  },
+});
+
 class Main extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchStaffs();
+    this.props.fetchDepts();
   }
 
   render() {
@@ -25,7 +40,7 @@ class Main extends Component {
       return (
         <ShowStaff
           staff={
-            this.props.staffs.filter(
+            this.props.staffs.staffs.filter(
               (staff) => staff.id === parseInt(match.params.staffId, 10)
             )[0]
           }
@@ -39,18 +54,24 @@ class Main extends Component {
           <Route
             exact
             path="/staffs"
-            component={() => <Menu staffs={this.props.staffs} />}
+            component={() => (
+              <Menu
+                staffs={this.props.staffs.staffs}
+                staffsLoading={this.props.staffs.isLoading}
+                staffsError={this.props.staffs.errMess}
+              />
+            )}
           />
           <Route path="/staffs/:staffId" component={StaffWithId} />
           <Route
             path="/departments"
             component={() => (
-              <ShowDepartments departments={this.props.departments} />
+              <ShowDepartments departments={this.props.departments.depts} />
             )}
           />
           <Route
             path="/moneys"
-            component={() => <ShowMoney staffs={this.props.staffs} />}
+            component={() => <ShowMoney staffs={this.props.staffs.staffs} />}
           />
           <Redirect to="/staffs" />
         </Switch>
@@ -59,4 +80,4 @@ class Main extends Component {
     );
   }
 }
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDitspatchToProps)(Main));
