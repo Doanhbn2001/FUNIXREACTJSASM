@@ -16,7 +16,6 @@ import { Redirect } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 // import { addStaff } from "../redux/reducer";
-import { store } from "../App";
 import { Loading } from "./loading";
 
 const required = (val) => val && val.length;
@@ -61,7 +60,7 @@ class Menu extends Component {
   }
 
   modalSubmit(values) {
-    // store.dispatch(addStaff(values));
+    this.props.postStaff(values);
     this.toggleModal();
   }
 
@@ -97,7 +96,7 @@ class Menu extends Component {
       } else if (this.props.staffsError) {
         return (
           <div className="row menu">
-            <h4>{this.props.staffs.staffsError}</h4>
+            <h4>{this.props.staffsError}</h4>
           </div>
         );
       } else {
@@ -136,9 +135,6 @@ class Menu extends Component {
           </div>
         </div>
         {fullMenu()}
-        {/* <div className="row menu">
-          {this.state.checkStaff ? menuFind : menu}
-        </div> */}
         <div className="row">
           <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
             <ModalHeader toggle={this.toggleModal}>Thêm nhân viên</ModalHeader>

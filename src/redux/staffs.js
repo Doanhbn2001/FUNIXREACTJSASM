@@ -16,6 +16,9 @@ export const Staffs = (
       return { ...state, isLoading: true, errMess: null, staffs: [] };
     case actionType.STAFFS_FAILED:
       return { ...state, isLoading: false, errMess: action.payload };
+    case actionType.ADD_STAFF:
+      var staff = action.payload;
+      return { ...state, staffs: state.staffs.concat(staff) };
     default:
       return state;
   }

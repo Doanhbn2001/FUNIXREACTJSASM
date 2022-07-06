@@ -22,7 +22,6 @@ class showMoney extends Component {
   }
 
   render() {
-    // alert(this.state.type);
     function Staff(staff) {
       return (
         <Card>
@@ -31,13 +30,7 @@ class showMoney extends Component {
           <CardText>Hệ số lương: {staff.salaryScale}</CardText>
           <CardText>Số ngày làm thêm: {staff.overTime}</CardText>
           <Breadcrumb>
-            <BreadcrumbItem>
-              Lương:{" "}
-              {(
-                staff.salaryScale * 3000000 +
-                staff.overTime * 200000
-              ).toFixed()}
-            </BreadcrumbItem>
+            <BreadcrumbItem>Lương: {staff.salary}</BreadcrumbItem>
           </Breadcrumb>
         </Card>
       );

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import dateFormat from "dateformat";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
@@ -25,7 +25,7 @@ function ShowStaff(props) {
           <p>
             Ngày vào công ty: {dateFormat(props.staff.startDate, "dd/mm/yyyy")}
           </p>
-          {/* <p>Phòng ban: {props.staff.department.name}</p> */}
+          {/* <p>Phòng ban: {props.staffDept.name}</p> */}
           <p>Số ngày nghỉ còn lại: {props.staff.annualLeave}</p>
           <p>Số ngày đã làm thêm: {props.staff.overTime}</p>
         </div>
