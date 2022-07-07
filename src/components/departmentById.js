@@ -57,7 +57,7 @@ class DepartmentsById extends Component {
       } else if (this.props.departmentsById.errMess) {
         return (
           <div className="row menu">
-            <h4>{this.props.staffs.staffsError}</h4>
+            <h4>{this.props.departmentsById.errMess}</h4>
           </div>
         );
       } else {

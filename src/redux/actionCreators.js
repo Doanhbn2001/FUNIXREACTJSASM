@@ -44,7 +44,6 @@ export const addStaffs = (staffs) => ({
 });
 
 export const postStaff = (staff) => (ditspatch) => {
-  console.log(staff);
   const newStaff = { ...staff };
   newStaff.image = "/assets/images/alberto.png";
   return fetch(baseStaffsUrl, {
@@ -64,6 +63,18 @@ export const addStaff = (staff) => ({
   type: actionType.ADD_STAFF,
   payload: staff,
 });
+
+export const updateStaffs = (staff) => (ditpatch) => {
+  console.log(staff);
+  const newStaff = { ...staff };
+  return fetch(baseStaffsUrl, {
+    method: "PATCH",
+    body: JSON.stringify(newStaff),
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  })
+    .then((reponse) => reponse.json())
+    .then((reponse) => console.log(reponse));
+};
 
 /////////////////////////////////////
 //departments

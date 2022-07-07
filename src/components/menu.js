@@ -10,7 +10,6 @@ import {
   Button,
   Row,
   Col,
-  Label,
 } from "reactstrap";
 import { Redirect } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
@@ -60,6 +59,7 @@ class Menu extends Component {
   }
 
   modalSubmit(values) {
+    console.log(values);
     this.props.postStaff(values);
     this.toggleModal();
   }
@@ -165,20 +165,20 @@ class Menu extends Component {
                   />
                 </Row>
                 <Row className="form-group">
-                  <label htmlFor="dob">Ngày sinh</label>
+                  <label htmlFor="doB">Ngày sinh</label>
                   <Control
                     type="date"
-                    model=".dob"
-                    name="dob"
+                    model=".doB"
+                    name="doB"
                     className="form-control"
                   />
                 </Row>
                 <Row className="form-group">
-                  <label htmlFor="firstdob">Ngày vào công ty</label>
+                  <label htmlFor="startDate">Ngày vào công ty</label>
                   <Control
                     type="date"
-                    model=".firstdob"
-                    name="firstdob"
+                    model=".startDate"
+                    name="startDate"
                     className="form-control"
                   />
                 </Row>

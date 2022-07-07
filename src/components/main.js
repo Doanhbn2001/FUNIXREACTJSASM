@@ -12,6 +12,7 @@ import {
   fetchDepts,
   fetchSalarys,
   postStaff,
+  updateStaffs,
 } from "../redux/actionCreators";
 import DepartmentsById from "./departmentById";
 
@@ -36,6 +37,9 @@ const mapDitspatchToProps = (ditspatch) => ({
   postStaff: (staff) => {
     ditspatch(postStaff(staff));
   },
+  updateStaffs: (staff) => {
+    ditspatch(updateStaffs(staff));
+  },
 });
 
 class Main extends Component {
@@ -54,7 +58,9 @@ class Main extends Component {
       const staffwithId = this.props.staffs.staffs.filter(
         (staff) => staff.id === parseInt(match.params.staffId, 10)
       )[0];
-      return <ShowStaff staff={staffwithId} />;
+      return (
+        <ShowStaff staff={staffwithId} updateStaffs={this.props.updateStaffs} />
+      );
     };
     return (
       <div>
