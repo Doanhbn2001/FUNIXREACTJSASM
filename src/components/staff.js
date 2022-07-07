@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import dateFormat from "dateformat";
 import {
   BreadcrumbItem,
@@ -12,8 +12,6 @@ import {
   Col,
 } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
-import { fetchStaffs } from "../redux/actionCreators";
-import { connect } from "react-redux";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
@@ -25,6 +23,7 @@ class ShowStaff extends Component {
     super(props);
     this.state = {
       isModalOpen: false,
+      isChange: false,
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.modalSubmit = this.modalSubmit.bind(this);
@@ -39,10 +38,20 @@ class ShowStaff extends Component {
     staffs.id = this.props.staff.id;
     this.props.updateStaffs(staffs);
     this.toggleModal();
+    this.setState({ isChange: true });
+    alert("Lưu thành công");
   }
   render() {
+    const changePage = () => {
+      if (this.state.isChange) {
+        return <Redirect to="../" />;
+      } else {
+        return null;
+      }
+    };
     return (
       <div className="container">
+        {changePage()}
         <div className="row">
           <Breadcrumb>
             <BreadcrumbItem>
