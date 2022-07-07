@@ -76,6 +76,15 @@ export const updateStaffs = (staff) => (ditpatch) => {
     .then((reponse) => console.log(reponse));
 };
 
+export const deleteStaff = (id) => (ditpatch) => {
+  return fetch(baseStaffsUrl + id, {
+    method: "DELETE",
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  })
+    .then((reponse) => reponse.json())
+    .then((reponse) => console.log(reponse));
+};
+
 /////////////////////////////////////
 //departments
 export const fetchDepts = () => (ditspatch) => {

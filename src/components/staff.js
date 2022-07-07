@@ -27,6 +27,7 @@ class ShowStaff extends Component {
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.modalSubmit = this.modalSubmit.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   toggleModal() {
@@ -40,6 +41,11 @@ class ShowStaff extends Component {
     this.toggleModal();
     this.setState({ isChange: true });
     alert("Lưu thành công");
+  }
+  delete() {
+    this.props.deleteStaff(this.props.staff.id);
+    alert("Lưu thành công");
+    this.setState({ isChange: true });
   }
   render() {
     const changePage = () => {
@@ -77,6 +83,9 @@ class ShowStaff extends Component {
             <p>Hệ số lương: {this.props.staff.salaryScale}</p>
             <Button outline onClick={this.toggleModal} color="warning">
               Sửa
+            </Button>
+            <Button outline onClick={this.delete} color="danger">
+              Xóa
             </Button>
           </div>
         </div>
